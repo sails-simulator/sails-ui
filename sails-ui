@@ -296,7 +296,7 @@ class SimWindow(Gtk.Window):
     def draw_waypoints(self, cr):
         E_RADIUS = 6378000
         with Canvas(cr):
-            for point in self.waypoints:
+            for point in self.waypoints or []:
                 # FIXME: abstract the slightly grim projection code away
                 lat = E_RADIUS * (point[0] / ((180 / math.pi) /
                                 math.cos(point[0] * math.pi/180)))

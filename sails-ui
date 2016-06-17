@@ -12,8 +12,6 @@ from gi.repository import Gdk
 from gi.repository import GLib
 import cairo
 
-import yaml
-
 import sailsd
 
 Keys = namedtuple('Keys', '''up down left right esc ctrl ctrl_right f11 space backtick''')
@@ -360,12 +358,11 @@ if __name__ == '__main__':
     waypoints_file = results.waypoints_file
     if waypoints_file is not None:
         with open(waypoints_file) as f:
-            waypoints_conf = yaml.load(f)
-            points = waypoints_conf.get('points')
+            lines = f.readlines()
 
             lat_long_points = []
-            for point in points:
-                lat, lon = point.split(',')
+            for line in lines:
+                lat, lon = line.split()
                 lat_long_points.append((float(lat), float(lon)))
 
             waypoints = lat_long_points

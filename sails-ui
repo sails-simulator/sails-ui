@@ -99,8 +99,8 @@ class SimWindow(Gtk.Window):
             # smooth scrolling, broken on NixOS for some reason
             self.scale -= event.delta_y * (self.scale/8)
 
-            if self.scale < 0.1:
-                self.scale = 0.1
+            if self.scale < 0.001:
+                self.scale = 0.001
         else:
             scroll_factor = 1
             if event.direction == Gdk.ScrollDirection.UP:

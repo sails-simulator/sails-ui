@@ -42,7 +42,7 @@ class SimWindow(Gtk.Window):
     def __init__(self, boat, waypoints):
         self.boat = boat
         self.waypoints = waypoints
-        print waypoints
+        print(waypoints)
 
         self.fps = 60
         GLib.timeout_add(1000.0/self.fps, self.update_boat)
@@ -323,7 +323,7 @@ class SimWindow(Gtk.Window):
 
         self.draw_waypoints(cr)
 
-        for i in range(-self.grid_n, self.grid_n):
+        for i in range(int(-self.grid_n), int(self.grid_n)):
             self.draw_x_gridline(cr, i)
             self.draw_y_gridline(cr, i)
             self.draw_x_line(cr, i)
